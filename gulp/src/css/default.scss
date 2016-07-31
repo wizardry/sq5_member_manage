@@ -1,0 +1,128 @@
+@charset "utf-8";
+@import "reset";
+@import "mixin";
+@import "vars";
+@import "layouts";
+@import "buttons";
+@import "tables";
+@import "form";
+
+body{
+	min-width:map-get($default,contentWidth);
+	line-height:map-get($default,line-height);
+	font-size:map-get($default,font-size);
+	color:map-get($default,color);
+	font-family:map-get($default,font-family);
+	position: relative;
+	background:nth($themeColor,1);
+	padding-bottom: 80px;
+}
+
+%clearfix{
+	@include clearfix();
+}
+
+a{
+	@include anim();
+	color:inherit;
+	text-decoration: underline;
+	&:hover{
+		text-decoration: none;
+	}
+}
+
+
+/*typography/headline*/
+.sectionHeadline{
+	font-size: 16px;
+	font-weight: bold;
+	padding:8px;
+	color:#f1f1f1;
+	margin-bottom: 16px;
+}
+.chapterHeadline{}
+.partHeadline{}
+
+.documentHeadline{}
+.formHeadline{}
+
+.lead{
+	line-height: 1.6;
+	margin:12px 0 24px;
+	padding:0 16px;
+}
+.copy{}
+.updatelist{
+	margin-left: 16px;
+	margin-bottom: 16px;
+	ul{
+
+	}
+	li{
+		list-style:disc;
+		margin-left: 16px;
+		margin-bottom: 8px;
+	}
+}
+/*blocks
+	class hieralcy
+	.fugaPage > .hogeBlock > .fizzArea
+*/
+.sectionBlock{
+	padding:8px 16px;
+	border-top: 1px solid nth($themeColor,2);
+	border-bottom: 1px solid nth($themeColor,2);
+}
+
+/** other components **/
+.hide{
+	display: none;
+}
+
+/*content*/
+.contentWrap{
+	@extend %clearfix;
+	width: 100%;
+}
+
+/** etc **/
+
+/*navigation*/
+.globalHeaderNav{
+	ul{
+		@extend %clearfix;
+	}
+	li{
+		float: left;
+		margin:8px 16px;
+	}
+	a{
+		@include anim();
+		text-align: center;
+		min-width: 100px;
+		display: inline-block;
+		text-decoration: none;
+		padding:8px 16px;
+		background:rgba(0,0,0,.5);
+		color:#fff;
+		border-radius: 5px;
+		&:hover,.current{
+			background:rgba(50,50,50,.5);
+		}
+	}
+}
+.breadcrumb{}
+
+.mainContentSection.sectionBlock{
+	@include anim(all);
+	opacity: 1;
+
+
+	&.ng-enter,&.ng-enter-active,&.ng-leave,&.ng-leave-active{
+	}
+	&.ng-enter,
+	&.ng-leave-active,
+	&.ng-enter-active{
+		opacity: 0;
+	}
+}

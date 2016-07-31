@@ -1,0 +1,57 @@
+.charactersSection
+	h2.sectionHeadline キャラクターマネージャー
+	.charaListBlock(ng-controller="charaListController")
+		.charaListHeader
+			button(type="button" ng-click="charaRegist()") 新規作成
+		.charaListContent
+			ul(ng-if="characters.length != 0" ng-repeat='character in characters')
+				li
+					.id
+					.jobIcon
+					.job
+						.nickname
+						.mainJob
+					.name
+					.race
+					.status
+					.delete
+						button(type=button) 削除
+			p(ng-if="characters.length == 0") キャラクターデータがありません。<br>キャラクターを作成してください。
+	.charaEditBlock(ng-controller="charaEditController" ng-show="false")
+		form
+			dl
+				dt 名前
+				dd
+					input(type="text" name="name")
+			dl
+				dt 種族
+				dd
+					ul
+						li
+							label
+								radio(name="race")
+			dl
+				dt 職業
+				dd
+					ul
+						li
+							label
+								radio(name="job")
+			dl
+				dt 二つ名
+				dd
+					ul
+						li
+							label
+								radio(name="nickname")
+			dl
+				dt Lv
+				dd
+					input(type="number" name="leavel")
+			dl
+				dt コメント
+				dd
+					textarea(type="text" name="comment")
+			.submitArea
+				button(type="submit") 作成
+	.charaSkillBlock(ng-controller="charaSkillController" ng-show="false")

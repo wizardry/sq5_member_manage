@@ -1,0 +1,38 @@
+//- frontmatter
+extends ./layouts/layout.jade
+//- /frontmatter
+
+block content
+	p test
+	h1(ng-controller="HelloWorldController") {{message}}
+	ul(ng-controller="testlistController")
+		li(ng-repeat="item in items") {{item.name}} : <em>{{item.text}}</em>
+	form(ng-controller="testEventController" ng-submit="submitHundle()")
+		input(type="text" ng-model="newlist")
+		button(type='submit') テスト登録
+		button(id="iterator" type="button" ng-click="clickHundle()") test++
+
+	div(ng-controller="tutorialController")
+		.firstTutorial
+			input(type="text" ng-model="name" ng-change="changeHundle()")
+			p {{'name:' + name}}
+		.secondTutorial
+			p users.length = {{users.length}}
+			ul(ng-repeat="user in users")
+				li {{user.name}}|{{user.index}}
+			p {{20 * 500|number}}
+			p {{5000000000000|number}}
+			p {{5000000000000|number:3}}
+			p {{123|number:3}}
+			p {{123|currency}}
+			p {{today|date:'yyyy/MM/dd'}}
+		.thirdTutorial
+			input(type="text" ng-model="query.name")
+			ul(ng-repeat="user in users|filter:query")
+				li {{user.name|uppercase}}
+		.fourthTutorial
+			.fouthTutorial1(ng-controller="fouthTutorial1")
+				input(type="text" ng-model="t4Name" ng-change="globalVarChange()")
+				.fouthTutorial2(ng-controller="fouthTutorial2")
+					p {{t4Name2}}
+
