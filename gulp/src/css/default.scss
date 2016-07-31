@@ -31,7 +31,9 @@ a{
 	}
 }
 
-
+label{
+	cursor: pointer;
+}
 /*typography/headline*/
 .sectionHeadline{
 	font-size: 16px;
@@ -73,7 +75,10 @@ a{
 	border-top: 1px solid nth($themeColor,2);
 	border-bottom: 1px solid nth($themeColor,2);
 }
-
+.contentWrap{
+	max-width:1260px;
+	margin:0 auto;
+}
 /** other components **/
 .hide{
 	display: none;
@@ -113,10 +118,14 @@ a{
 }
 .breadcrumb{}
 
+.contentOuter{
+	background:url('../img/content_bg.jpg') left top no-repeat;
+	background-size: cover;
+}
 .mainContentSection.sectionBlock{
 	@include anim(all);
 	opacity: 1;
-
+	background:rgba(0,0,0,.25);
 
 	&.ng-enter,&.ng-enter-active,&.ng-leave,&.ng-leave-active{
 	}
@@ -124,5 +133,65 @@ a{
 	&.ng-leave-active,
 	&.ng-enter-active{
 		opacity: 0;
+	}
+}
+.charactersSection{
+	.charaListBlock{
+		width: 300px;
+		float: left;
+		margin-right: 20px;
+	}
+	.charaListHeader{
+		margin:12px 0;
+	}
+	.charaListContent{
+		li,.emptyResult{
+			padding:8px;
+			border-radius: 5px;
+			border: 2px solid #fff;
+			background:rgba(50,50,50,.5);
+			line-height: 1.6;
+		}
+		li{
+			cursor: pointer;
+		}
+	}
+	.charaEditBlock{
+		border-radius: 5px;
+		border: 1px solid #000;
+		width: 400px;
+		float: left;
+		margin-right: 20px;
+		padding:16px;
+		background:rgba(0,0,0,.5);
+	}
+	.charaSkillBlock{
+		border: 1px solid #000;
+		width: 400px;
+		float: left;
+		margin-right: 20px;
+		padding:16px;
+		background:rgba(0,0,0,.5);
+
+	}
+}
+.formWrap{
+	dt{
+		margin-bottom: 8px;
+	}
+	dd{
+		margin-bottom: 16px;
+	}
+	.formList{
+		li{
+			width: 50%;
+			display: inline-block;
+		}
+		label{
+			margin:4px;
+			padding: 8px;
+			display: block;
+			border: 1px solid #000;
+		}
 	}
 }

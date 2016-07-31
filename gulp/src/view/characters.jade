@@ -1,8 +1,8 @@
-.charactersSection
+.contentWrap.charactersSection(ng-controller="charactorController")
 	h2.sectionHeadline キャラクターマネージャー
-	.charaListBlock(ng-controller="charaListController")
+	.charaListBlock(ng-controller="charaListController" ng-show="viewList")
 		.charaListHeader
-			button(type="button" ng-click="charaRegist()") 新規作成
+			button(type="button" class="btnBase primary block" ng-click="charaRegist()") 新規作成
 		.charaListContent
 			ul(ng-if="characters.length != 0" ng-repeat='character in characters')
 				li
@@ -16,9 +16,10 @@
 					.status
 					.delete
 						button(type=button) 削除
-			p(ng-if="characters.length == 0") キャラクターデータがありません。<br>キャラクターを作成してください。
-	.charaEditBlock(ng-controller="charaEditController" ng-show="false")
-		form
+			p(ng-if="characters.length == 0").emptyResult キャラクターデータがありません。<br>キャラクターを作成してください。
+	.charaEditBlock(ng-controller="charaEditController" ng-show="viewEdit")
+		form.formWrap
+			p ID:{{models.characters.length}}
 			dl
 				dt 名前
 				dd
@@ -26,24 +27,27 @@
 			dl
 				dt 種族
 				dd
-					ul
-						li
+					ul.formList
+						li(ng-repeat="race in races")
 							label
-								radio(name="race")
+								input(type="radio" name="race" value="{{race.id}}")
+								|{{race.name}}
 			dl
 				dt 職業
 				dd
-					ul
-						li
+					ul.formList
+						li(ng-repeat="job in jobs")
 							label
-								radio(name="job")
+								input(type="radio" name="job" value="{{job.id}}")
+								|{{job.ja}}
 			dl
 				dt 二つ名
 				dd
-					ul
-						li
+					ul.formList
+						li(ng-repeat="nickname in nicknames")
 							label
-								radio(name="nickname")
+								input(type="radio" name="nickname" value="{{nickname.id}}")
+								|{{nickname.name}}
 			dl
 				dt Lv
 				dd
@@ -54,4 +58,4 @@
 					textarea(type="text" name="comment")
 			.submitArea
 				button(type="submit") 作成
-	.charaSkillBlock(ng-controller="charaSkillController" ng-show="false")
+	.charaSkillBlock(ng-controller="charaSkillController" ng-show="viewSkill")

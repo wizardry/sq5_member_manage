@@ -10,12 +10,15 @@
 .globalHeader{
 	@extend %clearfix;
 	width: 100%;
+	.globalHeaderLogos{
+		border-bottom: 1px solid nth($themeColor,2);
+		
+	}
 	h1{
 		padding:8px 12px;
 		color:#f1f1f1;
 		font-size: 18px;
 		font-weight: bold;
-		border-bottom: 1px solid nth($themeColor,2);
 	}
 	a{
 		text-decoration: none;
