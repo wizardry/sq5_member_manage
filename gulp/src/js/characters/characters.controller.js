@@ -16,9 +16,13 @@
             $scope.nicknames = CONST.nickName;
             $scope.skills = CONST.skills;
 
+            $scope.isRegist = true;
+            $scope.editCharaData = {};
+
 
             $scope.charaRegist = function(){
                 console.log($scope.viewList)
+                $scope.isRegist = true;
                 $scope.viewEdit = true;
                 console.log('chara regist')
             }
@@ -42,6 +46,17 @@
         ['$scope',
         function($scope){
             console.log('charaEditController');
+            $scope.chara = $scope.editCharaData;
+            console.log($scope.chara)
+            if(!$scope.chara.job){
+                $scope.nicknamesShow = false;
+            }else{
+                $scope.nicknamesShow = true;
+            }
+
+            $scope.jobChange = function(){
+                $scope.nicknamesShow = true;
+            }
         }]
     )
     .controller(

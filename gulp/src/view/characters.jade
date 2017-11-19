@@ -27,35 +27,35 @@
 			dl
 				dt 種族
 				dd
-					ul.formList
+					ul.formList.racesList
 						li(ng-repeat="race in races")
 							label
-								input(type="radio" name="race" value="{{race.id}}")
+								input(type="radio" name="race" value="{{race.id}}" ng-model="chara.race")
 								|{{race.name}}
 			dl
 				dt 職業
 				dd
-					ul.formList
+					ul.formList.jobsList
 						li(ng-repeat="job in jobs")
 							label
-								input(type="radio" name="job" value="{{job.id}}")
+								input(type="radio" name="job" value="{{job.id}}" ng-model="chara.job" ng-change="jobChange()")
 								|{{job.ja}}
 			dl
 				dt 二つ名
 				dd
-					ul.formList
+					ul.formList(ng-show="nicknamesShow")
 						li(ng-repeat="nickname in nicknames")
 							label
-								input(type="radio" name="nickname" value="{{nickname.id}}")
+								input(type="radio" name="nickname" value="{{nickname.id}}" ng-model="chara.nickname")
 								|{{nickname.name}}
 			dl
 				dt Lv
 				dd
-					input(type="number" name="leavel")
+					input(type="number" name="leavel" ng-model="chara.leavel")
 			dl
 				dt コメント
 				dd
-					textarea(type="text" name="comment")
+					textarea(type="text" name="comment" ng-model="chara.comment")
 			.submitArea
 				button(type="submit") 作成
 	.charaSkillBlock(ng-controller="charaSkillController" ng-show="viewSkill")
